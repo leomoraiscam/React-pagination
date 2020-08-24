@@ -18,6 +18,11 @@ export const Table = styled.table`
     tr {
       text-align: left;
       border-bottom: 1px solid #dcdcdc;
+
+      td {
+        padding: 10px;
+        text-align: left;
+      }
     }
   }
 `;
