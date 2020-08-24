@@ -14,6 +14,7 @@ export const Table = styled.table`
 
   tbody {
     width: 100%;
+    border: 1px solid #dcdcdc;
 
     tr {
       text-align: left;

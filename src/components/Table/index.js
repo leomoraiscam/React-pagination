@@ -35,7 +35,7 @@ function Table() {
             <>
               <tr key={project.id}>
                 <td>{project.id}</td>
-                <td>{project.id}</td>
+                <td>{project.title}</td>
                 <td>{project.user_id}</td>
                 <td>{project.created_at}</td>
               </tr>
