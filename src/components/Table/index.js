@@ -4,12 +4,15 @@ import { Container, Table as ProjectTable } from "./styles";
 
 function Table() {
   const [projects, setProjects] = useState([]);
+  const [total, setTotal] = useState(0);
 
   useEffect(() => {
     async function loadProjects() {
       const response = await api.get("/projects");
       const { data } = response;
+      const { headers } = response;
 
+      setTotal(headers["x-total-count"]);
       setProjects(data);
     }
 
