@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import api from "../../services/api";
 import {
   Container,
@@ -41,10 +41,15 @@ function Table() {
     setPages(arrayPages);
   }, [total]);
 
+  const limits = useCallback((e) => {
+    setLimit(e.target.value);
+    setCurrentPage(1);
+  });
+
   return (
     <Container>
       <h3>Tabela de projetos</h3>
-      <select onChange={(e) => setLimit(e.target.value)}>
+      <select onChange={limits}>
         <option value="5">5</option>
         <option value="10">10</option>
         <option value="15">15</option>
