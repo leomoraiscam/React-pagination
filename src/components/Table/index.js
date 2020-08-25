@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import api from "../../services/api";
-import { Container, Table as ProjectTable } from "./styles";
+import { Container, Table as ProjectTable, Pagination } from "./styles";
 
 function Table() {
   const [projects, setProjects] = useState([]);
   const [total, setTotal] = useState(0);
+  const [limit, setLimit] = useState(5);
+  const [pages, setPages] = useState([]);
 
   useEffect(() => {
     async function loadProjects() {
@@ -13,6 +15,15 @@ function Table() {
       const { headers } = response;
 
       setTotal(headers["x-total-count"]);
+
+      const totalPages = Math.ceil(total / limit);
+      const arrayPages = [];
+
+      for (let i = 1; i <= totalPages; i++) {
+        arrayPages.push(i);
+      }
+
+      setPages(arrayPages);
       setProjects(data);
     }
 
@@ -46,6 +57,10 @@ function Table() {
           ))}
         </tbody>
       </ProjectTable>
+
+      <Pagination>
+        <div>Quantidade: {total}</div>
+      </Pagination>
     </Container>
   );
 }
