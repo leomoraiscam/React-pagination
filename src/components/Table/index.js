@@ -72,7 +72,10 @@ function Table() {
         <PaginationButton>
           <PaginationItem>Prev</PaginationItem>
           {pages.map((page) => (
-            <PaginationItem onClick={() => setCurrentPage(page)}>
+            <PaginationItem
+              isSelect={page === currentPage}
+              onClick={() => setCurrentPage(page)}
+            >
               {page}
             </PaginationItem>
           ))}

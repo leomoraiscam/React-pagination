@@ -39,5 +39,10 @@ export const PaginationButton = styled.div`
 
 export const PaginationItem = styled.div`
   margin: 0 10px;
+  ${(props) =>
+    props.isSelect && {
+      padding: "5px",
+      background: "#6d6d6d",
+    }}
   cursor: pointer;
 `;
