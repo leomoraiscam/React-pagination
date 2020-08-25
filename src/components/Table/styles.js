@@ -30,10 +30,14 @@ export const Table = styled.table`
 
 export const Pagination = styled.div`
   display: flex;
+  justify-content: space-between;
   width: 500px;
 `;
 export const PaginationButton = styled.div`
   display: flex;
 `;
 
-export const PaginationItem = styled.div``;
+export const PaginationItem = styled.div`
+  margin: 0 10px;
+  cursor: pointer;
+`;

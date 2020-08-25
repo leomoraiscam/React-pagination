@@ -13,10 +13,11 @@ function Table() {
   const [total, setTotal] = useState(0);
   const [limit, setLimit] = useState(5);
   const [pages, setPages] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     async function loadProjects() {
-      const response = await api.get("/projects");
+      const response = await api.get(`/projects?page=${currentPage}`);
       const { data } = response;
       const { headers } = response;
 
@@ -25,7 +26,7 @@ function Table() {
     }
 
     loadProjects();
-  }, []);
+  }, [currentPage]);
 
   useEffect(() => {
     const totalPages = Math.ceil(total / limit);
@@ -69,9 +70,13 @@ function Table() {
       <Pagination>
         <div>Quantidade: {total}</div>
         <PaginationButton>
+          <PaginationItem>Prev</PaginationItem>
           {pages.map((page) => (
-            <PaginationItem>{page}</PaginationItem>
+            <PaginationItem onClick={() => setCurrentPage(page)}>
+              {page}
+            </PaginationItem>
           ))}
+          <PaginationItem>Next</PaginationItem>
         </PaginationButton>
       </Pagination>
     </Container>
