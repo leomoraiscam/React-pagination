@@ -17,7 +17,9 @@ function Table() {
 
   useEffect(() => {
     async function loadProjects() {
-      const response = await api.get(`/projects?page=${currentPage}`);
+      const response = await api.get(
+        `/projects?page=${currentPage}&limit=${limit}`
+      );
       const { data } = response;
       const { headers } = response;
 
@@ -26,7 +28,7 @@ function Table() {
     }
 
     loadProjects();
-  }, [currentPage]);
+  }, [currentPage, limit]);
 
   useEffect(() => {
     const totalPages = Math.ceil(total / limit);
@@ -42,7 +44,12 @@ function Table() {
   return (
     <Container>
       <h3>Tabela de projetos</h3>
-
+      <select onChange={(e) => setLimit(e.target.value)}>
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+        <option value="100">100</option>
+      </select>
       <ProjectTable>
         <thead>
           <tr>
