@@ -32,3 +32,8 @@ export const Pagination = styled.div`
   display: flex;
   width: 500px;
 `;
+export const PaginationButton = styled.div`
+  display: flex;
+`;
+
+export const PaginationItem = styled.div``;
