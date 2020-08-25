@@ -70,7 +70,11 @@ function Table() {
       <Pagination>
         <div>Quantidade: {total}</div>
         <PaginationButton>
-          <PaginationItem>Prev</PaginationItem>
+          {currentPage > 1 && (
+            <PaginationItem onClick={() => setCurrentPage(currentPage - 1)}>
+              Prev
+            </PaginationItem>
+          )}
           {pages.map((page) => (
             <PaginationItem
               isSelect={page === currentPage}
@@ -79,7 +83,11 @@ function Table() {
               {page}
             </PaginationItem>
           ))}
-          <PaginationItem>Next</PaginationItem>
+          {currentPage < pages.length && (
+            <PaginationItem onClick={() => setCurrentPage(currentPage + 1)}>
+              Next
+            </PaginationItem>
+          )}
         </PaginationButton>
       </Pagination>
     </Container>
